@@ -1,0 +1,11 @@
+{{ define "homepage" }}
+{{ template "layout" }}
+<div class="homepage-body">
+<h1 class="title-stats">Stats</h1>
+{{range .Tips}}
+        <p>{{printf "%.8f" .Amount}}</p>
+{{end}}
+<p>{{.Total}}</p>
+<p>{{.Count}}</p>
+</div>
+{{ end }}
