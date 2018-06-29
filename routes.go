@@ -10,10 +10,11 @@ func initializeRoutes() {
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	http.HandleFunc("/", HomepageFunc)
+	http.HandleFunc("/stats", StatpageFunc)
 }
 
-func HomepageFunc(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
+func StatpageFunc(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/stats" {
 		http.NotFound(w,r)
 		return
 	}
@@ -50,7 +51,19 @@ func HomepageFunc(w http.ResponseWriter, r *http.Request) {
 		count,
 	}
 
-	err = templates.ExecuteTemplate(w, "homepage", data)
+	err = templates.ExecuteTemplate(w, "statpage", data)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+
+func HomepageFunc(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
+	err := templates.ExecuteTemplate(w, "homepage", nil)
 	if err != nil {
 		log.Println(err)
 	}

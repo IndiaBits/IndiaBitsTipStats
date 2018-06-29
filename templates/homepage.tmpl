@@ -1,70 +1,100 @@
 {{ define "homepage" }}
-{{ template "layout" }}
-<div class="container">
-    <h3>Stats</h3>
-    <div class="row">
-        <div class="col-sm-6 text-center">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h5>Tips</h5>
-                    <h3>
-                        <b>{{.Count}}</b>
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 text-center">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h5>Tipped amount</h5>
-                    <h3>
-                        <h3><b>{{.Total}} BTC</b></h3>
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <style id="nodum_724e3f6f7f8d082f46e23adfdd48ea5f">
-        /* NodumStyleStart */
-        /* SASS2CSS by Nodum @ 2018-06-19 06:12:49 */
-        code a{border-bottom:1px solid orange}code a:hover{border-bottom:none}
+{{ template  "layout"}}
 
-        /* NodumStyleEnd */
-    </style>
-    <h3>Recent activity</h3>
-    <p>The last 100 events are displayed below. </p>
-    <div class="table-responsive">
-        <table class="table table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th>Moment</th>
-                <th>Type</th>
-                <th class="text-right">BTC</th>
-                <th>User</th>
-                <th>To</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {{range .Tips}}
-            <tr>
-                <td>{{.CreatedAt}}</td>
-                <td><span class="text-default"><b>TIP</b></span></td>
-                <td class="text-right"><b>{{printf "%.8f" .Amount}} BTC</b></td>
-                <td><code class="text-primary"><a href="https://t.me/{{.From.Username}}" target="_blank">@{{.From.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
-                <td><code class="text-primary"><a href="https://t.me/{{.To.Username}}" target="_blank">@{{.To.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
-                <td><small class="text-muted hidden-sm hidden-xs"><a href="https://t.me/indiabits/" target="_blank"><i class="fa fa-external-link"></i> t.me</a></small></td>
-            </tr>
-            {{end}}
-            </tbody>
-        </table>
+<div class="container">
+    <div class="jumbotron" style="margin-top: -20px; padding-bottom: 35px;">
+        <h2><b>Indiabits Tip Bot</b> for Telegram</h2>
+        <p>
+            IndiaBitsTips is a bot that allows users to send Bitcoin to each other. To start tipping BTC, you have to deposit BTC to your TipBot Address First.
+        </p>
+        <p>
+            Once you have BTC in your tipping account you can start tipping! To do this simply reply to a comment.
+        </p>
+        <p>
+            <ul>
+                <li>
+                    Tips are offchain hence no fees for tipping users and database is maintained by IndiaBits Admin.
+                </li>
+                <li>
+                    Supports tip amount upto 8 decimal amount/points
+                </li>
+                <li>
+                    Its not recommended to use tipbot as a wallet or to exchange large amounts.
+                </li>
+            </ul>
+        </p>
     </div>
-    <hr />
-    <div class="text-center">
-        <small class="text-muted">
-            <a href="https://github.com/funyug/indiabitstips" target="_blank">Source</a>
-        </small>
-        <br />&nbsp;
+    <h3>How to use the <b>Indiabits Tip Bot</b></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading"><h5 class="text-center text-white">Send tips</h5></div>
+                <div class="panel-body list-group">
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">
+                            1. Register
+                        </h5>
+                        <p class="list-group-item-text">
+                            Send Direct Msg to @IndiaBitsBot "/Register" to Generate a unique bitcoin address that will be associated with your telegram username.
+                            [Make sure you withdraw your funds before changing your username on telegram]
+                        </p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">
+                            2. Deposit Bitcoin:
+                        </h5>
+                        <p class="list-group-item-text">
+                            You send some BTC to the Tip Bot address, There is no Fees for deposit or sending Tips
+                            Once received (After 3 Confirmatons) you will be able to use your funds to send tips
+                        </p>
+                    </a>
+                    <a href="#" class="list-group-item" style="border-bottom: none;">
+                        <h5 class="list-group-item-heading">
+                            3. Send tip using a reply
+                        </h5>
+                        <p class="list-group-item-text">
+                            Send a reply (to a post or msg) to tip the poster.
+                            Use the format/Example : 'Tip .1 Thanks for the quick help' to send .1BTC to the user you reply to.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading"><h5 class="text-center text-white">Receive tips</h5></div>
+                <div class="panel-body list-group">
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">
+                            1. Receive tips
+                        </h5>
+                        <p class="list-group-item-text">
+                            So you posted something interesting, helped someone, or someone just likes you. A generous person replies something like this to one of your posts:
+                            'Tip .1 Thanks for the Help' The Tip Bot will notice it has been mentioned, and transfers the Bitcoin
+                        </p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">
+                            2. Help
+                        </h5>
+                        <p class="list-group-item-text">
+                            Direct Message /Help to @IndiaBits to check your Tip Bot balance, deposit Bitcoin or withdraw your tips.
+                        </p>
+                    </a>
+                    <a href="https://www.xrptipbot.com/withdraw" class="list-group-item" style="border-bottom: none;">
+                        <h5 class="list-group-item-heading">
+                            3. Withdraw or tip others
+                        </h5>
+                        <p class="list-group-item-text">
+                            Use your balance to tip others by replying to their posts or withdraw to your own wallet. We'll process your withdrawal right away.
+                            Current Network fees will be charged for withdrawls : You will get prompted with fees and confirm button.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<hr />
+
 {{end}}

@@ -1,0 +1,70 @@
+{{ define "statpage" }}
+{{ template "layout" }}
+<div class="container">
+    <h3>Stats</h3>
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5>Tips</h5>
+                    <h3>
+                        <b>{{.Count}}</b>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5>Tipped amount</h5>
+                    <h3>
+                        <h3><b>{{.Total}} BTC</b></h3>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style id="nodum_724e3f6f7f8d082f46e23adfdd48ea5f">
+        /* NodumStyleStart */
+        /* SASS2CSS by Nodum @ 2018-06-19 06:12:49 */
+        code a{border-bottom:1px solid orange}code a:hover{border-bottom:none}
+
+        /* NodumStyleEnd */
+    </style>
+    <h3>Recent activity</h3>
+    <p>The last 100 events are displayed below. </p>
+    <div class="table-responsive">
+        <table class="table table-condensed table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Moment</th>
+                <th>Type</th>
+                <th class="text-right">BTC</th>
+                <th>User</th>
+                <th>To</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{range .Tips}}
+            <tr>
+                <td>{{.CreatedAt}}</td>
+                <td><span class="text-default"><b>TIP</b></span></td>
+                <td class="text-right"><b>{{printf "%.8f" .Amount}} BTC</b></td>
+                <td><code class="text-primary"><a href="https://t.me/{{.From.Username}}" target="_blank">@{{.From.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
+                <td><code class="text-primary"><a href="https://t.me/{{.To.Username}}" target="_blank">@{{.To.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
+                <td><small class="text-muted hidden-sm hidden-xs"><a href="https://t.me/indiabits/" target="_blank"><i class="fa fa-external-link"></i> t.me</a></small></td>
+            </tr>
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <div class="text-center">
+        <small class="text-muted">
+            <a href="https://github.com/funyug/indiabitstips" target="_blank">Source</a>
+        </small>
+        <br />&nbsp;
+    </div>
+</div>
+{{end}}
