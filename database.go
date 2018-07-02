@@ -25,6 +25,7 @@ type Tip struct {
 	Amount float64
 	From User
 	To User
+	TelegramMessageId int
 }
 
 var DB *gorm.DB

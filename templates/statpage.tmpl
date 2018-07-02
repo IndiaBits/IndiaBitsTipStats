@@ -48,12 +48,12 @@
             <tbody>
             {{range .Tips}}
             <tr>
-                <td>{{.CreatedAt}}</td>
+                <td>{{ .CreatedAt.Format "January 02, 2006 03:04:05 PM" }}</td>
                 <td><span class="text-default"><b>TIP</b></span></td>
                 <td class="text-right"><b>{{printf "%.8f" .Amount}} BTC</b></td>
                 <td><code class="text-primary"><a href="https://t.me/{{.From.Username}}" target="_blank">@{{.From.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
                 <td><code class="text-primary"><a href="https://t.me/{{.To.Username}}" target="_blank">@{{.To.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
-                <td><small class="text-muted hidden-sm hidden-xs"><a href="https://t.me/indiabits/" target="_blank"><i class="fa fa-external-link"></i> t.me</a></small></td>
+                <td><small class="text-muted hidden-sm hidden-xs"><a href="https://t.me/indiabits/{{.TelegramMessageId}}" target="_blank"><i class="fa fa-external-link"></i> t.me</a></small></td>
             </tr>
             {{end}}
             </tbody>
