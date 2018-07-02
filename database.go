@@ -45,7 +45,7 @@ func (tip *Tip) Find(p Params) ([]Tip, error) {
 		DB.Preload("From").Preload("To").Find(&tips ,tip)
 		return tips, DB.Error
 	}
-	DB.Preload("From").Preload("To").Limit(p.Limit).Find(&tips ,tip)
+	DB.Preload("From").Preload("To").Order("created_at desc").Limit(p.Limit).Find(&tips ,tip)
 	return tips, DB.Error
 }
 

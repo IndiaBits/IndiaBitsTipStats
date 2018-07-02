@@ -1,26 +1,9 @@
-html, body {
-    margin: 0;
-    padding: 0;
+.list-group-item-text {
+    color: black;
 }
-.header {
-    top: 0;
-    height:70px;
-    width: 100%;
-    background: #2196f3;
-    position: fixed;
-    color: #b2dbfb;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+.logo, .title {
+    text-align: center;
 }
-.site-title {
-    margin-left: 4%;
-    margin-bottom: 0;
-    margin-top: 10px;
-    font-size:26px;
-}
-.site-tagline {
-    margin-left: 4%;
-    margin-top: 0;
-}
-.homepage-body {
-    margin-top: 5%;
+.logo-image {
+    height: 200px;
 }
