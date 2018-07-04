@@ -34,6 +34,13 @@ func StatpageFunc(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	users, err := UserCount()
+	if err != nil {
+		log.Println(err)
+		http.Error(w, "500 Internal Server Error", 500)
+		return
+	}
+
 	total_tips, err := TippedAmount()
 	if err != nil {
 		log.Println(err)
@@ -45,10 +52,12 @@ func StatpageFunc(w http.ResponseWriter, r *http.Request) {
 		Tips []Tip
 		Total float64
 		Count int64
+		Users int64
 	}{
 		tips,
 		total_tips,
 		count,
+		users,
 	}
 
 	err = templates.ExecuteTemplate(w, "statpage", data)

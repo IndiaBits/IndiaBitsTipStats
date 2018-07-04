@@ -3,7 +3,17 @@
 <div class="container">
     <h3>Stats</h3>
     <div class="row">
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-4 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5>Users</h5>
+                    <h3>
+                        <b>{{.Users}}</b>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 text-center">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h5>Tips</h5>
@@ -13,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-4 text-center">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h5>Tipped amount</h5>
@@ -42,7 +52,6 @@
                 <th class="text-right">BTC</th>
                 <th>User</th>
                 <th>To</th>
-                <th>Reason</th>
             </tr>
             </thead>
             <tbody>
@@ -53,7 +62,6 @@
                 <td class="text-right"><b>{{printf "%.8f" .Amount}} BTC</b></td>
                 <td><code class="text-primary"><a href="https://t.me/{{.From.Username}}" target="_blank">@{{.From.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
                 <td><code class="text-primary"><a href="https://t.me/{{.To.Username}}" target="_blank">@{{.To.Username}}</a></code><i class="fa fa-telegram text-primary fa-fw"></i></td>
-                <td><small class="text-muted hidden-sm hidden-xs"><a href="https://t.me/indiabits/{{.TelegramMessageId}}" target="_blank"><i class="fa fa-external-link"></i> t.me</a></small></td>
             </tr>
             {{end}}
             </tbody>

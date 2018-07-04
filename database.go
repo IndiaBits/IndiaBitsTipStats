@@ -56,6 +56,12 @@ func Count() (int64, error) {
 	return count, DB.Error
 }
 
+func UserCount() (int64, error) {
+	var count int64
+	DB.Table("users").Count(&count)
+	return count, DB.Error
+}
+
 func TippedAmount() (float64, error) {
 	type Result struct {
 		Total float64
